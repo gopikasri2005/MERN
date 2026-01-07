@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import News from './components/News';
 
 function App() {
+  const [category, setCategory] = useState("general");
+
+  // Common style for buttons
+  const buttonStyle = {
+    padding: "10px 18px",
+    border: "none",
+    borderRadius: "25px",
+    fontSize: "14px",
+    fontWeight: "600",
+    cursor: "pointer",
+    color: "white",
+    background: "linear-gradient(135deg, #2196f3, #1976d2)",
+    margin: "5px"
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{
+      padding: "20px",
+      fontFamily: "Arial, sans-serif",
+      backgroundColor: "#f4f6f8",
+      minHeight: "100vh"
+    }}>
+      <h1 style={{ textAlign: "center", marginBottom: "20px", color: "#222" }}>
+        News Application
+      </h1>
+
+      <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", marginBottom: "30px" }}>
+        <button style={buttonStyle} onClick={() => setCategory("general")}>General</button>
+        <button style={buttonStyle} onClick={() => setCategory("technology")}>Technology</button>
+        <button style={buttonStyle} onClick={() => setCategory("sports")}>Sports</button>
+        <button style={buttonStyle} onClick={() => setCategory("science")}>Science</button>
+        <button style={buttonStyle} onClick={() => setCategory("entertainment")}>Entertainment</button>
+      </div>
+
+      <News category={category} />
     </div>
   );
 }
